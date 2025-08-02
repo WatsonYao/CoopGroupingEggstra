@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CoopGrouping" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">#115B3E</item>
+         <item name="colorPrimary">#BD510E</item>
+         <item name="colorSecondary">#BD510E</item>
+         <item name="colorOnSecondary">#FFFFFF</item>
     </style>
 
     <style name="Theme.CoopGrouping" parent="Base.Theme.CoopGrouping" />

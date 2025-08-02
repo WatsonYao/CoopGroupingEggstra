@@ -1,14 +1,20 @@
 package watson.coopgrouping.eggstra
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.LayoutInflater
+import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -61,6 +67,12 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     findViewById<Button>(R.id.exit).setOnClickListener {
       this.finish()
     }
+    //弹出 bottomsheet，可选择1-10，
+    //url为 https://leanny.github.io/eggstra_work/coop_event_10.html
+    //点击数字后，替换url里面的数字，跳转浏览器打开该url
+    findViewById<Button>(R.id.info).setOnClickListener {
+      showInfoBottomSheet()
+    }
 
     lifecycleScope.launch {
       withContext(Dispatchers.IO) {
@@ -75,7 +87,7 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
   private val INFO_DASH = "--"
 
   private fun loadRaw() {
-    val rawResId = R.raw.source09 // Replace with your actual raw resource ID
+    val rawResId = R.raw.source10 // Replace with your actual raw resource ID
     rootData = readJsonFromRaw(this, rawResId)
 
     if (rootData != null) {
@@ -245,6 +257,55 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     tts.shutdown()
     window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     super.onDestroy()
+  }
+
+  private fun showInfoBottomSheet() {
+    val bottomSheetDialog = BottomSheetDialog(this)
+    val bottomSheetView = LayoutInflater.from(this).inflate(android.R.layout.simple_list_item_1, null)
+    
+    // 创建一个垂直的LinearLayout来容纳按钮
+    val linearLayout = LinearLayout(this).apply {
+      orientation = LinearLayout.VERTICAL
+      setPadding(32, 32, 32, 32)
+    }
+    
+    // 创建1-10的数字按钮
+    for (i in 1..10) {
+      val button = Button(this).apply {
+        text = "第 ${i} 次团队打工竞赛"
+        textSize = 18f
+        setPadding(16, 16, 16, 16)
+        setOnClickListener {
+          openInfoUrl(i)
+          bottomSheetDialog.dismiss()
+        }
+      }
+      
+      val layoutParams = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT
+      ).apply {
+        setMargins(0, 8, 0, 8)
+      }
+      
+      linearLayout.addView(button, layoutParams)
+    }
+    
+    bottomSheetDialog.setContentView(linearLayout)
+    bottomSheetDialog.show()
+  }
+  
+  private fun openInfoUrl(number: Int) {
+    val baseUrl = "https://leanny.github.io/eggstra_work/coop_event_"
+    val formattedNumber = if (number < 10) String.format("%02d", number) else number.toString()
+    val url = "${baseUrl}${formattedNumber}.html"
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    try {
+      startActivity(intent)
+    } catch (e: Exception) {
+      // 处理没有浏览器的情况
+      log("无法打开浏览器: ${e.message}")
+    }
   }
 
   private val bossNames = mapOf(

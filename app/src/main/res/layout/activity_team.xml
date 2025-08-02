@@ -41,19 +41,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w3_150"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="150%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w3_180"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="180%"
@@ -84,28 +86,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w4_180"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="180%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w4_210"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="210%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w4_240"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="240%"
@@ -136,37 +141,41 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_210"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="210%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_240"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="240%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_270"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="270%"
                     android:textColor="#fff"
                     android:textSize="14sp" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_300"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="300%"
@@ -230,6 +239,7 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="#BD510E"
         android:text="开始"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:cornerRadius="12dp" />
 
@@ -241,19 +251,40 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="#4A7A4C"
         android:text="结束"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:cornerRadius="12dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/exit"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:backgroundTint="#434343"
-        android:text="退出"
-        android:textSize="20sp"
-        app:cornerRadius="12dp" />
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/info"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#434343"
+            android:text="历史"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/exit"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:backgroundTint="#434343"
+            android:text="退出"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
 
 
 </LinearLayout>
