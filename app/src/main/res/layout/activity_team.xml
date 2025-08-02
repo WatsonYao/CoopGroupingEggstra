@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101F14"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/splatfont2"
+                android:text="W3"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/gW3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/w3_150"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="150%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w3_180"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="180%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/splatfont2"
+                android:text="W4"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/gW4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/w4_180"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="180%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w4_210"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="210%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w4_240"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="240%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/splatfont2"
+                android:text="W5"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/gW5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/w5_210"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="210%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w5_240"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="240%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w5_270"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="270%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/w5_300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:fontFamily="@font/splatfont2"
+                    android:text="300%"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/splatfont2"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:text="WAVE 3: 100"
+        android:textColor="#fff"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/current"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/caner03"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:text="赞!"
+        android:textColor="#fff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:alpha="0.6"
+        android:fontFamily="@font/caner03"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:text="来这里!"
+        android:textColor="#fff"
+        android:textSize="50sp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#BD510E"
+        android:text="开始"
+        android:textSize="20sp"
+        app:cornerRadius="12dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/close"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#4A7A4C"
+        android:text="结束"
+        android:textSize="20sp"
+        app:cornerRadius="12dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#434343"
+        android:text="退出"
+        android:textSize="20sp"
+        app:cornerRadius="12dp" />
+
+
+</LinearLayout>
