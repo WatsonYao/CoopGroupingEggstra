@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲑鱼跑出怪时间线优化分析</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        .wave-container {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .wave-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 10px;
+            background: transparent;
+            color: #333;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+        .danger-level {
+            font-size: 16px;
+            background: rgba(0,0,0,0.1);
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .timeline {
+            position: relative;
+            height: 240px;
+            background: linear-gradient(90deg, #e3f2fd 0%, #ffebee 100%);
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+        }
+        .spawn-zone {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 80px;
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #666;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+        .spawn-zone.zone-a {
+            top: 0;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .spawn-zone.zone-b {
+            top: 80px;
+            background: rgba(33, 150, 243, 0.1);
+        }
+        .spawn-zone.zone-c {
+            top: 160px;
+            background: rgba(255, 152, 0, 0.1);
+            border-bottom: none;
+        }
+        .time-marker {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #666;
+            z-index: 1;
+        }
+        .time-label {
+            position: absolute;
+            top: -20px;
+            font-size: 10px;
+            color: #666;
+            transform: translateX(-50%);
+        }
+        .monster {
+            position: absolute;
+            height: 25px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s;
+            min-width: 40px;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .monster:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        .monster.ranged {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            border: 2px solid #b71c1c;
+        }
+        .monster.melee {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            border: 2px solid #0d47a1;
+        }
+        .monster.green {
+            background: linear-gradient(45deg, #4CAF50, #388E3C);
+            border: 2px solid #2E7D32;
+        }
+        .monster.lesser {
+            background: linear-gradient(45deg, #9E9E9E, #616161);
+            border: 2px solid #424242;
+        }
+        .priority-section {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #ff9800;
+        }
+        .strategy-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .strategy-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .strategy-list li:before {
+            content: "⚡ ";
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .hazard-warning {
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #f44336;
+            margin: 10px 0;
+        }
+        .tooltip {
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 100;
+            pointer-events: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="timeline-container"></div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        const data = {
+  "w3": {
+    "p900": [
+      {
+        "Spawn": "B",
+        "Timing": 0,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakeArtillery",
+        "Spawn": "B",
+        "Timing": 0,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "Sakerocket",
+        "Spawn": "B",
+        "Timing": 695,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakeDolphin",
+        "Spawn": "B",
+        "Timing": 695,
+        "SubSpawn": 1
+      },
+      {
+        "Spawn": "A",
+        "Timing": 720,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienCupTwins",
+        "Spawn": "A",
+        "Timing": 720,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "A",
+        "Timing": 1258,
+        "SubSpawn": 2
+      },
+      {
+        "Boss": "SakeDolphin",
+        "Spawn": "A",
+        "Timing": 1435,
+        "SubSpawn": 1
+      },
+      {
+        "Spawn": "B",
+        "Timing": 1440,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "B",
+        "Timing": 1440,
+        "SubSpawn": 2
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "B",
+        "Timing": 1768,
+        "SubSpawn": 2
+      },
+      {
+        "Boss": "SakelienCupTwins",
+        "Spawn": "B",
+        "Timing": 2011,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 2160,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "A",
+        "Timing": 2160,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 2456,
+        "SubSpawn": 2
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 2492,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 2871,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "C",
+        "Timing": 2880,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "C",
+        "Timing": 2880,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "C",
+        "Timing": 2994,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "Sakerocket",
+        "Spawn": "C",
+        "Timing": 3077,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "C",
+        "Timing": 3530,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 3600,
+        "Lesser": true
+      },
+      {
+        "Boss": "Sakediver",
+        "Spawn": "A",
+        "Timing": 3600,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 3834,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "Sakediver",
+        "Spawn": "A",
+        "Timing": 3994,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakePillar",
+        "Spawn": "A",
+        "Timing": 4304,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "C",
+        "Timing": 4320,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "C",
+        "Timing": 4320,
+        "SubSpawn": 1
+      },
+      {
+        "Spawn": "B",
+        "Timing": 5040,
+        "Lesser": true
+      },
+      {
+        "Spawn": "C",
+        "Timing": 5760,
+        "Lesser": true
+      }
+    ]
+  },
+  "w5": {
+    "p1500": [
+      {
+        "Spawn": "B",
+        "Timing": 0,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "B",
+        "Timing": 0,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "B",
+        "Timing": 55,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakeDolphin",
+        "Spawn": "B",
+        "Timing": 192,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 540,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienCupTwins",
+        "Spawn": "A",
+        "Timing": 540,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 664,
+        "SubSpawn": 2
+      },
+      {
+        "Boss": "SakeDolphin",
+        "Spawn": "A",
+        "Timing": 962,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "A",
+        "Timing": 973,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "C",
+        "Timing": 1080,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "C",
+        "Timing": 1080,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienTower",
+        "Spawn": "C",
+        "Timing": 1151,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "C",
+        "Timing": 1156,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "C",
+        "Timing": 1167,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "B",
+        "Timing": 1620,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakePillar",
+        "Spawn": "B",
+        "Timing": 1620,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "B",
+        "Timing": 1905,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "Sakerocket",
+        "Spawn": "B",
+        "Timing": 1954,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienCupTwins",
+        "Spawn": "B",
+        "Timing": 2139,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 2160,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "A",
+        "Timing": 2160,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakeDolphin",
+        "Spawn": "A",
+        "Timing": 2167,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "Sakerocket",
+        "Spawn": "A",
+        "Timing": 2571,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 2698,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "C",
+        "Timing": 2700,
+        "Lesser": true
+      },
+      {
+        "Boss": "Sakerocket",
+        "Spawn": "C",
+        "Timing": 2700,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienCupTwins",
+        "Spawn": "C",
+        "Timing": 2701,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "Sakediver",
+        "Spawn": "C",
+        "Timing": 2883,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "C",
+        "Timing": 3114,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 3240,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakeSaucer",
+        "Spawn": "A",
+        "Timing": 3240,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakePillar",
+        "Spawn": "A",
+        "Timing": 3272,
+        "SubSpawn": 0
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "A",
+        "Timing": 3485,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "A",
+        "Timing": 3614,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "C",
+        "Timing": 3780,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "C",
+        "Timing": 3780,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienSnake",
+        "Spawn": "C",
+        "Timing": 3935,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "Sakediver",
+        "Spawn": "C",
+        "Timing": 4132,
+        "SubSpawn": 1
+      },
+      {
+        "Boss": "SakelienShield",
+        "Spawn": "C",
+        "Timing": 4150,
+        "SubSpawn": 2
+      },
+      {
+        "Spawn": "B",
+        "Timing": 4320,
+        "Lesser": true
+      },
+      {
+        "Boss": "SakelienBomber",
+        "Spawn": "B",
+        "Timing": 4320,
+        "SubSpawn": 0
+      },
+      {
+        "Spawn": "A",
+        "Timing": 4860,
+        "Lesser": true
+      },
+      {
+        "Spawn": "B",
+        "Timing": 5400,
+        "Lesser": true
+      },
+      {
+        "Spawn": "A",
+        "Timing": 5940,
+        "Lesser": true
+      }
+    ]
+  }
+};
+
+        const monsterNames = {
+            "SakelienShield": "车",
+            "SakelienCupTwins": "垃圾桶",
+            "Sakediver": "鼹鼠",
+            "Sakerocket": "伞",
+            "SakelienSnake": "蛇",
+            "SakelienTower": "塔",
+            "SakePillar": "柱鱼",
+            "SakeArtillery": "铁球",
+            "SakeDolphin": "海豚",
+            "SakelienBomber": "绿帽",
+            "SakeSaucer": "锅盖",
+            "SakelienGolden": "金鲑鱼"
+        };
+
+        const greenMonsters = ["SakelienShield", "Sakediver"]; // 车和鼹鼠
+        const rangedMonsters = ["SakelienCupTwins", "SakeArtillery", "SakelienTower"];
+
+        function calculateDangerLevel(pKey) {
+            const numValue = parseInt(pKey.substring(1)); // 提取p后面的数字
+            return (numValue * 2) / 10;
+        }
+
+        function calculateShowTime(timing) {
+            return Math.floor(100.0 - timing / 60.0);
+        }
+
+        function getMonsterClass(monster) {
+            if (monster.Lesser) return 'lesser';
+            if (monster.Boss && greenMonsters.includes(monster.Boss)) return 'green';
+            if (monster.Boss && rangedMonsters.includes(monster.Boss)) return 'ranged';
+            return 'melee';
+        }
+
+        function getMonsterName(monster) {
+            if (monster.Lesser) return '小鲑鱼';
+            return monsterNames[monster.Boss] || monster.Boss || '未知';
+        }
+
+        function createTimeline(waveKey, waveData) {
+            const container = document.getElementById('timeline-container');
+            const waveDiv = document.createElement('div');
+            waveDiv.className = 'wave-container';
+            
+            const header = document.createElement('div');
+            header.className = 'wave-header';
+            header.innerHTML = `
+                <span>第${waveKey.substring(1)}波 - Wave ${waveKey.substring(1)}</span>
+                <span class="danger-level">危险度: ${calculateDangerLevel(Object.keys(waveData)[0])}</span>
+            `;
+            waveDiv.appendChild(header);
+
+            Object.entries(waveData).forEach(([pKey, monsters]) => {
+                const timelineDiv = document.createElement('div');
+                timelineDiv.style.marginBottom = '20px';
+                
+                const timeline = document.createElement('div');
+                timeline.className = 'timeline';
+                
+                // 添加时间刻度
+                for (let i = 0; i <= 100; i += 10) {
+                    const marker = document.createElement('div');
+                    marker.className = 'time-marker';
+                    marker.style.left = `${i}%`;
+                    
+                    const label = document.createElement('div');
+                    label.className = 'time-label';
+                    label.textContent = `${100 - i}s`;
+                    label.style.left = `${i}%`;
+                    marker.appendChild(label);
+                    
+                    timeline.appendChild(marker);
+                }
+                
+                // 添加spawn区域标识
+                const zoneA = document.createElement('div');
+                zoneA.className = 'spawn-zone zone-a';
+                zoneA.textContent = 'A区域';
+                timeline.appendChild(zoneA);
+                
+                const zoneB = document.createElement('div');
+                zoneB.className = 'spawn-zone zone-b';
+                zoneB.textContent = 'B区域';
+                timeline.appendChild(zoneB);
+                
+                const zoneC = document.createElement('div');
+                zoneC.className = 'spawn-zone zone-c';
+                zoneC.textContent = 'C区域';
+                timeline.appendChild(zoneC);
+                
+                // 添加怪物
+                monsters.forEach((monster, index) => {
+                    const showTime = calculateShowTime(monster.Timing);
+                    const monsterDiv = document.createElement('div');
+                    monsterDiv.className = `monster ${getMonsterClass(monster)}`;
+                    
+                    const position = (100 - showTime) / 100 * 100;
+                    monsterDiv.style.left = `${position}%`;
+                    
+                    // 根据Spawn区域分配垂直位置
+                    let baseTop = 20;
+                    let layerOffset = 0;
+                    
+                    if (monster.Spawn === 'A') {
+                        baseTop = 20; // A区域 (上层 0-80px)
+                    } else if (monster.Spawn === 'B') {
+                        baseTop = 100; // B区域 (中层 80-160px)
+                    } else if (monster.Spawn === 'C') {
+                        baseTop = 180; // C区域 (下层 160-240px)
+                    }
+                    
+                    // 在同一spawn区域内避免重叠
+                    const sameSpawnIndex = monsters.slice(0, index).filter(m => m.Spawn === monster.Spawn).length;
+                    layerOffset = (sameSpawnIndex % 2) * 30;
+                    
+                    monsterDiv.style.top = `${baseTop + layerOffset}px`;
+                    
+                    const name = getMonsterName(monster);
+                    monsterDiv.textContent = name;
+                    
+                    monsterDiv.addEventListener('mouseenter', (e) => {
+                        const tooltip = document.getElementById('tooltip');
+                        tooltip.style.display = 'block';
+                        tooltip.innerHTML = `
+                            <strong>${name}</strong><br>
+                            出现时间: ${showTime}秒<br>
+                            位置: ${monster.Spawn}<br>
+                            ${monster.SubSpawn !== undefined ? `子位置: ${monster.SubSpawn}<br>` : ''}
+                            原始Timing: ${monster.Timing}
+                        `;
+                    });
+                    
+                    monsterDiv.addEventListener('mousemove', (e) => {
+                        const tooltip = document.getElementById('tooltip');
+                        tooltip.style.left = `${e.pageX + 10}px`;
+                        tooltip.style.top = `${e.pageY - 10}px`;
+                    });
+                    
+                    monsterDiv.addEventListener('mouseleave', () => {
+                        document.getElementById('tooltip').style.display = 'none';
+                    });
+                    
+                    timeline.appendChild(monsterDiv);
+                });
+                
+                timelineDiv.appendChild(timeline);
+                
+                waveDiv.appendChild(timelineDiv);
+            });
+            
+            container.appendChild(waveDiv);
+        }
+
+        // 渲染所有波次
+        Object.entries(data).forEach(([waveKey, waveData]) => {
+            createTimeline(waveKey, waveData);
+        });
+    </script>
+</body>
+</html>
