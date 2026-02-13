@@ -87,7 +87,7 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
   private val INFO_DASH = "--"
 
   private fun loadRaw() {
-    val rawResId = R.raw.source10 // Replace with your actual raw resource ID
+    val rawResId = R.raw.source12 // Replace with your actual raw resource ID
     rootData = readJsonFromRaw(this, rawResId)
 
     if (rootData != null) {
@@ -135,9 +135,9 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
   //根据radiobutton选择情况更新当前wave的list
   private fun updateRadioSelect() {
     val json = rootData ?: return
-    waveHeadList[0].clearAdd(json.w1.p300)
-    waveHeadList[1].clearAdd(json.w2.p600)
-    checkRg3(json)
+    //waveHeadList[0].clearAdd(json.w1.p300)
+    //waveHeadList[1].clearAdd(json.w2.p600)
+    //checkRg3(json)
     checkRg4(json)
     checkRg5(json)
   }
@@ -159,7 +159,7 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     job = lifecycleScope.launch {
       flow {
-        for (wave in 3..totalWaves) {
+        for (wave in 4..totalWaves) {
           log("Wave $wave starting...")
           nextIndex = -1
           for (i in waveDurationSeconds downTo 0) {
@@ -270,7 +270,7 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
     
     // 创建1-10的数字按钮
-    for (i in 1..10) {
+    for (i in 1..12) {
       val button = Button(this).apply {
         text = "第 ${i} 次团队打工竞赛"
         textSize = 18f
@@ -326,12 +326,12 @@ class TeamActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
   private fun checkRg3(json: RootData) {
     val selectedId = radioGroup3.checkedRadioButtonId
     when (selectedId) {
-      R.id.w3_150 -> {
-        waveHeadList[2].clearAdd(json.w3.p750)
+      R.id.w3_180 -> {
+        waveHeadList[2].clearAdd(json.w4.p1200)
       }
 
-      R.id.w3_180 -> {
-        waveHeadList[2].clearAdd(json.w3.p900)
+      R.id.w5_300 -> {
+        waveHeadList[2].clearAdd(json.w5.p1500)
       }
 
       else -> {}

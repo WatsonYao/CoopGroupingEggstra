@@ -25,7 +25,8 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="32dp"
@@ -45,22 +46,23 @@
                     android:id="@+id/w3_150"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="150%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w3_180"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="180%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:buttonTint="@color/radio_button_color" />
             </RadioGroup>
         </LinearLayout>
 
@@ -90,32 +92,34 @@
                     android:id="@+id/w4_180"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="180%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w4_210"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="210%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w4_240"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="240%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:buttonTint="@color/radio_button_color" />
             </RadioGroup>
         </LinearLayout>
 
@@ -145,42 +149,45 @@
                     android:id="@+id/w5_210"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="210%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_240"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="240%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_270"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:fontFamily="@font/splatfont2"
                     android:text="270%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:buttonTint="@color/radio_button_color" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/w5_300"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/radio_button_color"
                     android:checked="true"
                     android:fontFamily="@font/splatfont2"
                     android:text="300%"
                     android:textColor="#fff"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:buttonTint="@color/radio_button_color" />
             </RadioGroup>
         </LinearLayout>
 
@@ -197,7 +204,7 @@
         android:fontFamily="@font/splatfont2"
         android:gravity="center_vertical"
         android:paddingBottom="4dp"
-        android:text="WAVE 3: 100"
+        android:text="WAVE 4: 100"
         android:textColor="#fff"
         android:textSize="60sp" />
 
