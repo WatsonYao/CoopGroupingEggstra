@@ -83,5 +83,5 @@
 ```
 
 3. APK 下载/获取地址（之前的下载地址）
-- 目录：`app/build/outputs/apk/release/`
+- 目录：`app/release/`
 - 常见文件名：`app-release.apk`
