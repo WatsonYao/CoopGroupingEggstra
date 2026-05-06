@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲑鱼跑出怪时间线优化分析 - Source 12</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        .waves-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .wave-container {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 0 0 auto;
+        }
+        .wave-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 10px;
+            background: transparent;
+            color: #333;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .play-btn, .stop-btn {
+            padding: 7.5px 45px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .play-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .play-btn:hover {
+            background-color: #45a049;
+        }
+        .play-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .stop-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .stop-btn:hover {
+            background-color: #da190b;
+        }
+        .stop-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .danger-level {
+            font-size: 16px;
+            background: rgba(0,0,0,0.1);
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .timeline {
+            position: relative;
+            width: 810px;
+            height: 1000px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            margin: 10px auto;
+            border: 2px solid #ddd;
+        }
+        .spawn-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 270px;
+            border-right: 1px solid #ccc;
+            background: rgba(0,0,0,0.05);
+        }
+        .spawn-zone.zone-a {
+            background: rgba(76, 175, 80, 0.05);
+        }
+        .spawn-zone.zone-b {
+            background: rgba(33, 150, 243, 0.05);
+        }
+        .spawn-zone.zone-c {
+            background: rgba(255, 152, 0, 0.05);
+        }
+        .time-marker {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #666;
+            z-index: 1;
+        }
+        .time-label {
+            position: absolute;
+            left: -25px;
+            font-size: 10px;
+            color: #666;
+            transform: translateY(-50%);
+        }
+        .monster {
+            position: absolute;
+            height: 25px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s;
+            min-width: 45px;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .monster:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        .monster.lesser {
+            background: linear-gradient(45deg, #9E9E9E, #616161);
+            border: 2px solid #424242;
+        }
+        .zone-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #666;
+            font-size: 14px;
+        }
+        .zone-label {
+            width: 270px;
+            text-align: center;
+        }
+        .zone-label.zone-a {
+            color: #4CAF50;
+        }
+        .zone-label.zone-b {
+            color: #2196F3;
+        }
+        .zone-label.zone-c {
+            color: #FF9800;
+        }
+        .tooltip {
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 100;
+            pointer-events: none;
+            display: none;
+        }
+        .current-time-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #ff5722;
+            z-index: 50;
+            box-shadow: 0 0 5px rgba(255, 87, 34, 0.7);
+            display: none;
+        }
+        
+        .color-customization {
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .color-customization h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .monster-color-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        
+        .monster-name-label {
+            min-width: 80px;
+            font-weight: bold;
+            margin-right: 20px;
+            color: #333;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+            border-color: #666;
+        }
+        
+        .color-option.selected {
+            border-color: #333;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .color-option.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+        
+        .visibility-control {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .visibility-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .visibility-label {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="waves-container" id="timeline-container"></div>
+
+    <div class="color-customization">
+        <h3>🎨 怪物颜色自定义</h3>
+        <div id="monster-color-panel"></div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        const data = {
+    "w4": {
+        "p1200": [
+            {
+                "Spawn": "A",
+                "Timing": 0,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienBomber",
+                "Spawn": "A",
+                "Timing": 0,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "A",
+                "Timing": 348,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "A",
+                "Timing": 414,
+                "SubSpawn": 1
+            },
+            {
+                "Spawn": "B",
+                "Timing": 617,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "B",
+                "Timing": 617,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakerocket",
+                "Spawn": "B",
+                "Timing": 644,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "B",
+                "Timing": 1059,
+                "SubSpawn": 1
+            },
+            {
+                "Spawn": "A",
+                "Timing": 1234,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "A",
+                "Timing": 1234,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "A",
+                "Timing": 1572,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "A",
+                "Timing": 1664,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "SakelienCupTwins",
+                "Spawn": "A",
+                "Timing": 1826,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 1851,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakeDolphin",
+                "Spawn": "C",
+                "Timing": 1851,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "C",
+                "Timing": 2017,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "C",
+                "Timing": 2298,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "C",
+                "Timing": 2463,
+                "SubSpawn": 2
+            },
+            {
+                "Spawn": "B",
+                "Timing": 2468,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienSnake",
+                "Spawn": "B",
+                "Timing": 2468,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakePillar",
+                "Spawn": "B",
+                "Timing": 2473,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "B",
+                "Timing": 2490,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "SakePillar",
+                "Spawn": "B",
+                "Timing": 3062,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 3085,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienBomber",
+                "Spawn": "C",
+                "Timing": 3085,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "SakePillar",
+                "Spawn": "C",
+                "Timing": 3115,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "C",
+                "Timing": 3367,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "C",
+                "Timing": 3428,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "A",
+                "Timing": 3702,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienSnake",
+                "Spawn": "A",
+                "Timing": 3702,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienShield",
+                "Spawn": "A",
+                "Timing": 3840,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienSnake",
+                "Spawn": "A",
+                "Timing": 4074,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "A",
+                "Timing": 4251,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "B",
+                "Timing": 4319,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "B",
+                "Timing": 4319,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 4937,
+                "Lesser": true
+            },
+            {
+                "Spawn": "B",
+                "Timing": 5554,
+                "Lesser": true
+            }
+        ]
+    },
+    "w5": {
+        "p1500": [
+            {
+                "Spawn": "A",
+                "Timing": 0,
+                "Lesser": true
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "A",
+                "Timing": 0,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienShield",
+                "Spawn": "A",
+                "Timing": 393,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "A",
+                "Timing": 433,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "B",
+                "Timing": 540,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienShield",
+                "Spawn": "B",
+                "Timing": 540,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakeDolphin",
+                "Spawn": "B",
+                "Timing": 616,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "B",
+                "Timing": 795,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "B",
+                "Timing": 1001,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "A",
+                "Timing": 1080,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienSnake",
+                "Spawn": "A",
+                "Timing": 1080,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "A",
+                "Timing": 1159,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "A",
+                "Timing": 1164,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienShield",
+                "Spawn": "A",
+                "Timing": 1360,
+                "SubSpawn": 3
+            },
+            {
+                "Spawn": "C",
+                "Timing": 1620,
+                "Lesser": true
+            },
+            {
+                "Boss": "Sakerocket",
+                "Spawn": "C",
+                "Timing": 1620,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "C",
+                "Timing": 1719,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakerocket",
+                "Spawn": "C",
+                "Timing": 1810,
+                "SubSpawn": 3
+            },
+            {
+                "Boss": "SakeDolphin",
+                "Spawn": "C",
+                "Timing": 2049,
+                "SubSpawn": 3
+            },
+            {
+                "Spawn": "B",
+                "Timing": 2160,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "B",
+                "Timing": 2160,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeArtillery",
+                "Spawn": "B",
+                "Timing": 2374,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "B",
+                "Timing": 2383,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienCupTwins",
+                "Spawn": "B",
+                "Timing": 2526,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 2700,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "C",
+                "Timing": 2700,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeDolphin",
+                "Spawn": "C",
+                "Timing": 2820,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakeDolphin",
+                "Spawn": "C",
+                "Timing": 2888,
+                "SubSpawn": 2
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "C",
+                "Timing": 2988,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "B",
+                "Timing": 3240,
+                "Lesser": true
+            },
+            {
+                "Boss": "Sakerocket",
+                "Spawn": "B",
+                "Timing": 3240,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienCupTwins",
+                "Spawn": "B",
+                "Timing": 3287,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakerocket",
+                "Spawn": "B",
+                "Timing": 3407,
+                "SubSpawn": 3
+            },
+            {
+                "Boss": "SakePillar",
+                "Spawn": "B",
+                "Timing": 3677,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 3780,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakeSaucer",
+                "Spawn": "C",
+                "Timing": 3780,
+                "SubSpawn": 1
+            },
+            {
+                "Boss": "SakelienCupTwins",
+                "Spawn": "C",
+                "Timing": 3886,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "SakelienTower",
+                "Spawn": "C",
+                "Timing": 4028,
+                "SubSpawn": 0
+            },
+            {
+                "Boss": "Sakediver",
+                "Spawn": "C",
+                "Timing": 4250,
+                "SubSpawn": 3
+            },
+            {
+                "Spawn": "B",
+                "Timing": 4320,
+                "Lesser": true
+            },
+            {
+                "Boss": "SakelienCupTwins",
+                "Spawn": "B",
+                "Timing": 4320,
+                "SubSpawn": 0
+            },
+            {
+                "Spawn": "C",
+                "Timing": 4860,
+                "Lesser": true
+            },
+            {
+                "Spawn": "A",
+                "Timing": 5400,
+                "Lesser": true
+            },
+            {
+                "Spawn": "B",
+                "Timing": 5940,
+                "Lesser": true
+            }
+        ]
+    }
+};
+
+        // 区域顺序配置
+        const waveZoneOrders = {
+            "w4": ['C', 'B', 'A'],
+            "w5": ['A', 'B', 'C'],
+            "default": ['A', 'B', 'C']
+        };
+
+        const monsterNames = {
+            "SakelienShield": "车",
+            "SakelienCupTwins": "垃圾桶",
+            "Sakediver": "鼹鼠",
+            "Sakerocket": "伞",
+            "SakelienSnake": "蛇",
+            "SakelienTower": "塔",
+            "SakePillar": "柱鱼",
+            "SakeArtillery": "铁球",
+            "SakeDolphin": "海豚",
+            "SakelienBomber": "绿帽",
+            "SakeSaucer": "锅盖",
+            "SakelienGolden": "金鲑鱼"
+        };
+
+        const colorOptions = [
+            { name: '红色', primary: '#FF6B6B', secondary: '#E55A5A', dark: '#CC4444' },
+            { name: '橙色', primary: '#FFB366', secondary: '#FF9A47', dark: '#E08033' },
+            { name: '黄色', primary: '#FFEB66', secondary: '#FFE033', dark: '#E6CC00' },
+            { name: '绿色', primary: '#66D966', secondary: '#4CAF50', dark: '#388E3C' },
+            { name: '蓝色', primary: '#66B3FF', secondary: '#4DA6FF', dark: '#3399FF' },
+            { name: '靛色', primary: '#9966CC', secondary: '#8A47CC', dark: '#7033B8' },
+            { name: '紫色', primary: '#CC66FF', secondary: '#B347FF', dark: '#9933E6' }
+        ];
+
+        const defaultMonsterColors = {
+            "SakelienShield": 3,
+            "SakelienCupTwins": 0,
+            "Sakediver": 3,
+            "Sakerocket": 4,
+            "SakelienSnake": 4,
+            "SakelienTower": 0,
+            "SakePillar": 4,
+            "SakeArtillery": 0,
+            "SakeDolphin": 4,
+            "SakelienBomber": 4,
+            "SakeSaucer": 4,
+            "SakelienGolden": 1
+        };
+
+        let currentMonsterColors = { ...defaultMonsterColors };
+        const defaultMonsterVisibility = {};
+        Object.keys(monsterNames).forEach(bossKey => {
+            defaultMonsterVisibility[bossKey] = true;
+        });
+
+        let currentMonsterVisibility = { ...defaultMonsterVisibility };
+
+        function loadColorSettings() {
+            const saved = localStorage.getItem('monsterColors');
+            if (saved) {
+                try {
+                    currentMonsterColors = { ...defaultMonsterColors, ...JSON.parse(saved) };
+                } catch (e) {
+                    console.warn('加载颜色设置失败');
+                }
+            }
+        }
+
+        function loadVisibilitySettings() {
+            const saved = localStorage.getItem('monsterVisibility');
+            if (saved) {
+                try {
+                    currentMonsterVisibility = { ...defaultMonsterVisibility, ...JSON.parse(saved) };
+                } catch (e) {
+                    console.warn('加载显示设置失败');
+                }
+            }
+        }
+
+        function saveColorSettings() {
+            localStorage.setItem('monsterColors', JSON.stringify(currentMonsterColors));
+        }
+
+        function saveVisibilitySettings() {
+            localStorage.setItem('monsterVisibility', JSON.stringify(currentMonsterVisibility));
+        }
+
+        const rangedMonsters = ["SakelienCupTwins", "SakeArtillery", "SakelienTower"];
+
+        function calculateDangerLevel(pKey) {
+            const numValue = parseInt(pKey.substring(1));
+            return (numValue * 2) / 10;
+        }
+
+        function calculateShowTime(timing) {
+            return Math.floor(100.0 - timing / 60.0);
+        }
+
+        function getMonsterClass(monster) {
+            if (monster.Lesser) return 'lesser';
+            return 'custom-color';
+        }
+
+        function getMonsterName(monster) {
+            if (monster.Lesser) return '鲑鱼';
+            return monsterNames[monster.Boss] || monster.Boss || '未知';
+        }
+
+        function createColorCustomizationPanel() {
+            const panel = document.getElementById('monster-color-panel');
+            panel.innerHTML = '';
+            const monstersByColor = {};
+            Object.entries(monsterNames).forEach(([bossKey, displayName]) => {
+                const colorIndex = defaultMonsterColors[bossKey];
+                if (!monstersByColor[colorIndex]) {
+                    monstersByColor[colorIndex] = [];
+                }
+                monstersByColor[colorIndex].push([bossKey, displayName]);
+            });
+
+            Object.keys(monstersByColor)
+                .sort((a, b) => parseInt(a) - parseInt(b))
+                .forEach(colorIndex => {
+                    const monstersInGroup = monstersByColor[colorIndex];
+                    monstersInGroup.forEach(([bossKey, displayName]) => {
+                        const row = document.createElement('div');
+                        row.className = 'monster-color-row';
+                        const label = document.createElement('div');
+                        label.className = 'monster-name-label';
+                        label.textContent = displayName;
+                        row.appendChild(label);
+
+                        const colorOptionsDiv = document.createElement('div');
+                        colorOptionsDiv.className = 'color-options';
+                        colorOptions.forEach((color, index) => {
+                            const colorDiv = document.createElement('div');
+                            colorDiv.className = 'color-option';
+                            colorDiv.style.background = `linear-gradient(45deg, ${color.primary}, ${color.secondary})`;
+                            colorDiv.title = color.name;
+                            if (currentMonsterColors[bossKey] === index) {
+                                colorDiv.classList.add('selected');
+                            }
+                            colorDiv.addEventListener('click', () => {
+                                currentMonsterColors[bossKey] = index;
+                                saveColorSettings();
+                                row.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                                colorDiv.classList.add('selected');
+                                refreshTimelines();
+                            });
+                            colorOptionsDiv.appendChild(colorDiv);
+                        });
+                        row.appendChild(colorOptionsDiv);
+
+                        const visibilityControl = document.createElement('div');
+                        visibilityControl.className = 'visibility-control';
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.className = 'visibility-checkbox';
+                        checkbox.id = `visibility-${bossKey}`;
+                        checkbox.checked = currentMonsterVisibility[bossKey];
+                        const checkboxLabel = document.createElement('label');
+                        checkboxLabel.className = 'visibility-label';
+                        checkboxLabel.htmlFor = `visibility-${bossKey}`;
+                        checkboxLabel.textContent = '显示';
+                        checkbox.addEventListener('change', () => {
+                            currentMonsterVisibility[bossKey] = checkbox.checked;
+                            saveVisibilitySettings();
+                            refreshTimelines();
+                        });
+                        visibilityControl.appendChild(checkbox);
+                        visibilityControl.appendChild(checkboxLabel);
+                        row.appendChild(visibilityControl);
+                        panel.appendChild(row);
+                    });
+                });
+        }
+
+        function getMonsterCustomColor(monster) {
+            if (monster.Lesser) return null;
+            const colorIndex = currentMonsterColors[monster.Boss] || 0;
+            const color = colorOptions[colorIndex];
+            return {
+                background: `linear-gradient(45deg, ${color.primary}, ${color.secondary})`,
+                border: `2px solid ${color.dark}`
+            };
+        }
+
+        function applyCustomColor(monsterDiv, monster) {
+            if (monster.Lesser) return;
+            const customColor = getMonsterCustomColor(monster);
+            if (customColor) {
+                monsterDiv.style.background = customColor.background;
+                monsterDiv.style.border = customColor.border;
+            }
+        }
+
+        function refreshTimelines() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+            Object.entries(data).forEach(([waveKey, waveData]) => {
+                createTimeline(waveKey, waveData);
+            });
+        }
+
+        function createTimeline(waveKey, waveData) {
+            const container = document.getElementById('timeline-container');
+            const waveDiv = document.createElement('div');
+            waveDiv.className = 'wave-container';
+            
+            const header = document.createElement('div');
+            header.className = 'wave-header';
+            header.innerHTML = `
+                <span>Wave ${waveKey.substring(1)}</span>
+                <div class="control-buttons">
+                    <button class="play-btn" onclick="playWave('${waveKey}')">播放</button>
+                    <button class="stop-btn" onclick="stopWave('${waveKey}')" disabled>停止</button>
+                </div>
+                <span class="danger-level">危险度: ${calculateDangerLevel(Object.keys(waveData)[0])}</span>
+            `;
+            waveDiv.appendChild(header);
+
+            // 获取特定的区域顺序
+            const zoneOrder = waveZoneOrders[waveKey] || waveZoneOrders.default;
+
+            Object.entries(waveData).forEach(([pKey, monsters]) => {
+                const timelineDiv = document.createElement('div');
+                timelineDiv.style.marginBottom = '20px';
+                
+                const zoneHeader = document.createElement('div');
+                zoneHeader.className = 'zone-header';
+                const zoneLabels = zoneOrder.map(zone => 
+                    `<div class="zone-label zone-${zone.toLowerCase()}">${zone}区域</div>`
+                ).join('');
+                zoneHeader.innerHTML = zoneLabels;
+                timelineDiv.appendChild(zoneHeader);
+                
+                const timeline = document.createElement('div');
+                timeline.className = 'timeline';
+                
+                const monsterTimes = new Set();
+                monsters.forEach(monster => {
+                    if (!monster.Lesser && currentMonsterVisibility[monster.Boss]) {
+                        const showTime = calculateShowTime(monster.Timing);
+                        monsterTimes.add(showTime);
+                    }
+                });
+                
+                const allTimes = new Set();
+                for (let i = 0; i <= 100; i += 5) {
+                    allTimes.add(100 - i);
+                }
+                monsterTimes.forEach(time => allTimes.add(time));
+                const sortedTimes = Array.from(allTimes).sort((a, b) => b - a);
+                
+                sortedTimes.forEach(time => {
+                    const position = (100 - time) / 100 * 100;
+                    const marker = document.createElement('div');
+                    marker.className = 'time-marker';
+                    marker.style.top = `${position}%`;
+                    const label = document.createElement('div');
+                    label.className = 'time-label';
+                    const isMultipleOfFive = time % 5 === 0;
+                    if (monsterTimes.has(time) && !isMultipleOfFive) {
+                        label.style.fontWeight = 'bold';
+                        label.style.color = '#ffab91';
+                        marker.style.background = 'transparent';
+                        marker.style.borderTop = '1px dashed #ffab91';
+                    } else if (monsterTimes.has(time) && isMultipleOfFive) {
+                        label.style.fontWeight = 'bold';
+                        label.style.color = '#ffab91';
+                        marker.style.background = '#666';
+                    }
+                    label.textContent = `${time}s`;
+                    label.style.top = `${position}%`;
+                    marker.appendChild(label);
+                    timeline.appendChild(marker);
+                });
+                
+                zoneOrder.forEach((zone, index) => {
+                    const zoneDiv = document.createElement('div');
+                    zoneDiv.className = `spawn-zone zone-${zone.toLowerCase()}`;
+                    zoneDiv.style.left = `${index * 270}px`;
+                    if (index === zoneOrder.length - 1) {
+                        zoneDiv.style.borderRight = 'none';
+                    }
+                    timeline.appendChild(zoneDiv);
+                });
+                
+                const visibleMonsters = monsters
+                    .map((monster, index) => ({ ...monster, originalIndex: index }))
+                    .filter(m => !m.Lesser && currentMonsterVisibility[m.Boss])
+                    .sort((a, b) => a.Timing - b.Timing);
+
+                const zoneStates = {};
+                zoneOrder.forEach(z => zoneStates[z] = { lastTiming: -Infinity, lastSubColumn: 3 });
+                const subColumnCount = 4;
+
+                visibleMonsters.forEach(monster => {
+                    const state = zoneStates[monster.Spawn];
+                    if (state) {
+                        const timeDiffInSeconds = (monster.Timing - state.lastTiming) / 60.0;
+                        if (timeDiffInSeconds > 2) {
+                            monster.subColumn = 0;
+                        } else {
+                            monster.subColumn = (state.lastSubColumn + 1) % subColumnCount;
+                        }
+                        state.lastTiming = monster.Timing;
+                        state.lastSubColumn = monster.subColumn;
+                    } else {
+                        monster.subColumn = 0;
+                    }
+                });
+
+                const subColumnMap = new Map(visibleMonsters.map(m => [m.originalIndex, m.subColumn]));
+
+                monsters.forEach((monster, index) => {
+                    if (monster.Lesser || !currentMonsterVisibility[monster.Boss]) return;
+                    
+                    const showTime = calculateShowTime(monster.Timing);
+                    const monsterDiv = document.createElement('div');
+                    monsterDiv.className = `monster ${getMonsterClass(monster)}`;
+                    const position = (100 - showTime) / 100 * 100;
+                    monsterDiv.style.top = `${position}%`;
+                    
+                    const zoneIndex = zoneOrder.indexOf(monster.Spawn);
+                    const subColumn = subColumnMap.get(index);
+                    let baseLeft = 20;
+                    if (zoneIndex !== -1) {
+                        baseLeft += zoneIndex * 270;
+                    }
+                    let layerOffset = 0;
+                    if (subColumn !== undefined) {
+                        layerOffset = subColumn * 60;
+                    }
+                    monsterDiv.style.left = `${baseLeft + layerOffset}px`;
+                    
+                    let zIndex = index + 2;
+                    if (rangedMonsters.includes(monster.Boss)) {
+                        zIndex += 100;
+                    }
+                    monsterDiv.style.zIndex = zIndex;
+                    const name = getMonsterName(monster);
+                    monsterDiv.textContent = name;
+                    applyCustomColor(monsterDiv, monster);
+                    
+                    monsterDiv.addEventListener('mouseenter', (e) => {
+                        const tooltip = document.getElementById('tooltip');
+                        tooltip.style.display = 'block';
+                        tooltip.innerHTML = `
+                            <strong>${name}</strong><br>
+                            出现时间: ${showTime}秒<br>
+                            位置: ${monster.Spawn}<br>
+                            ${monster.SubSpawn !== undefined ? `子位置: ${monster.SubSpawn}<br>` : ''}
+                            原始Timing: ${monster.Timing}
+                        `;
+                    });
+                    monsterDiv.addEventListener('mousemove', (e) => {
+                        const tooltip = document.getElementById('tooltip');
+                        tooltip.style.left = `${e.pageX + 10}px`;
+                        tooltip.style.top = `${e.pageY - 10}px`;
+                    });
+                    monsterDiv.addEventListener('mouseleave', () => {
+                        document.getElementById('tooltip').style.display = 'none';
+                    });
+                    timeline.appendChild(monsterDiv);
+                });
+                
+                const currentTimeLine = document.createElement('div');
+                currentTimeLine.className = 'current-time-line';
+                currentTimeLine.id = `current-time-${waveKey}-${pKey}`;
+                timeline.appendChild(currentTimeLine);
+                timelineDiv.appendChild(timeline);
+                waveDiv.appendChild(timelineDiv);
+            });
+            container.appendChild(waveDiv);
+        }
+
+        let currentPlayingWave = null;
+        let animationInterval = null;
+        let ttsEnabled = true;
+        
+        function speakText(text) {
+            if (!ttsEnabled || !('speechSynthesis' in window)) return;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 1.8;
+            speechSynthesis.speak(utterance);
+        }
+        
+        function playWave(waveKey) {
+            if (currentPlayingWave) stopWave(currentPlayingWave);
+            currentPlayingWave = waveKey;
+            const playBtn = document.querySelector(`[onclick="playWave('${waveKey}')"]`);
+            const stopBtn = document.querySelector(`[onclick="stopWave('${waveKey}')"]`);
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+            
+            const waveData = data[waveKey];
+            let currentTime = 100;
+            const allMonsters = [];
+            Object.entries(waveData).forEach(([pKey, monsters]) => {
+                monsters.forEach(monster => {
+                    allMonsters.push({
+                        ...monster,
+                        showTime: calculateShowTime(monster.Timing),
+                        pKey: pKey
+                    });
+                });
+            });
+            allMonsters.sort((a, b) => b.showTime - a.showTime);
+            
+            animationInterval = setInterval(() => {
+                Object.keys(waveData).forEach(pKey => {
+                    const timeLine = document.getElementById(`current-time-${waveKey}-${pKey}`);
+                    if (timeLine) {
+                        timeLine.style.top = `${(100 - currentTime)}%`;
+                        timeLine.style.display = 'block';
+                    }
+                });
+                const currentTimeMonsters = allMonsters.filter(m => m.showTime === currentTime && !m.Lesser);
+                if (currentTimeMonsters.length > 0) {
+                    const monstersByRegion = {};
+                    currentTimeMonsters.forEach(m => {
+                        const region = m.Spawn.toLowerCase();
+                        if (!monstersByRegion[region]) monstersByRegion[region] = [];
+                        monstersByRegion[region].push(getMonsterName(m));
+                    });
+                    Object.entries(monstersByRegion).forEach(([region, monsters]) => {
+                        speakText(`${region} ${monsters.join(' ')}`);
+                    });
+                }
+                currentTime--;
+                if (currentTime < 0) stopWave(waveKey);
+            }, 1000);
+        }
+        
+        function stopWave(waveKey) {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+            currentPlayingWave = null;
+            const playBtn = document.querySelector(`[onclick="playWave('${waveKey}')"]`);
+            const stopBtn = document.querySelector(`[onclick="stopWave('${waveKey}')"]`);
+            if (playBtn) playBtn.disabled = false;
+            if (stopBtn) stopBtn.disabled = true;
+            const waveData = data[waveKey];
+            Object.keys(waveData).forEach(pKey => {
+                const timeLine = document.getElementById(`current-time-${waveKey}-${pKey}`);
+                if (timeLine) timeLine.style.display = 'none';
+            });
+        }
+        
+        loadColorSettings();
+        loadVisibilitySettings();
+        createColorCustomizationPanel();
+        Object.entries(data).forEach(([waveKey, waveData]) => {
+            createTimeline(waveKey, waveData);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3478 @@
+{
+  "Snatcher": [
+    4,
+    1,
+    4,
+    4,
+    2
+  ],
+  "Map": 8,
+  "Waves": [
+    18,
+    14,
+    0,
+    5,
+    1
+  ],
+  "Weapons": [
+    "Maneuver_Short",
+    "Blaster_Short",
+    "Maneuver_Dual",
+    "Shooter_Long"
+  ],
+  "Specials": [
+    "SpPogo",
+    "SpMicroLaser",
+    "SpNiceBall",
+    "SpSkewer"
+  ],
+  "Spawns": {
+    "1": {
+      "300": [
+        {
+          "Spawn": "B",
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "SubSpawn": 0
+        }
+      ]
+    },
+    "2": {
+      "300": [
+        {
+          "Targets": [
+            49,
+            18,
+            66,
+            3,
+            42
+          ]
+        }
+      ],
+      "450": [
+        {
+          "Targets": [
+            49,
+            18,
+            66,
+            3,
+            42
+          ]
+        }
+      ],
+      "600": [
+        {
+          "Targets": [
+            49,
+            18,
+            66,
+            3,
+            42
+          ]
+        }
+      ]
+    },
+    "3": {
+      "300": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 665,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 1080,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "B",
+          "Timing": 1249,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "C",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 2541,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "C",
+          "Timing": 2792,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3240,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 3611,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 4166,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "450": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 254,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 665,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "C",
+          "Timing": 1080,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 1144,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 1249,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2160,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 2541,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2792,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3240,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "A",
+          "Timing": 3611,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 4142,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 4166,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "600": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 296,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 829,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 864,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "C",
+          "Timing": 864,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 1396,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 1585,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1728,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 1728,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 1863,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 1931,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2592,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2592,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "A",
+          "Timing": 2643,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 3098,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3456,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "B",
+          "Timing": 3456,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3761,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 4197,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5184,
+          "Lesser": true
+        }
+      ],
+      "750": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 254,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 591,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "C",
+          "Timing": 720,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 734,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 967,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 1440,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 1883,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2131,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "A",
+          "Timing": 2273,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 2761,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "B",
+          "Timing": 2880,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3049,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 3301,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 3600,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 3642,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 4217,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ],
+      "900": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 254,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 591,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "C",
+          "Timing": 720,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 734,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 967,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 1440,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 1883,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2131,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "A",
+          "Timing": 2273,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 2663,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 2761,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2880,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 3049,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "B",
+          "Timing": 3301,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3514,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 3600,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3642,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 4138,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 4217,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeArtillery",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ]
+    },
+    "4": {
+      "300": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 413,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 1080,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 1955,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 2251,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "C",
+          "Timing": 2905,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "C",
+          "Timing": 3240,
+          "SubSpawn": 4,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "A",
+          "Timing": 3624,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3962,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "450": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 413,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 415,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 1080,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 1717,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 1955,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 2160,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 2251,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 2905,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 3240,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3624,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 3936,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 3962,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "600": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 307,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 465,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 864,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 864,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 1194,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 1421,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1728,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1728,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 2060,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 2428,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2592,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2592,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2665,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 3101,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3456,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 3456,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 4033,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 4052,
+          "SubSpawn": 0,
+          "Eggs": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5184,
+          "Lesser": true
+        }
+      ],
+      "750": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 496,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 570,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 720,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 827,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 976,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1440,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1715,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1828,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2624,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 2743,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 2880,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2941,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 3156,
+          "SubSpawn": 0,
+          "Eggs": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3600,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 4024,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "B",
+          "Timing": 4081,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ],
+      "900": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 496,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 570,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 720,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 827,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 976,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1440,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1715,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1828,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2298,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 2624,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 2743,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2880,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2941,
+          "SubSpawn": 0,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 3156,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 3194,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 3600,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 4024,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 4035,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 4081,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ],
+      "1050": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 269,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 364,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 617,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 617,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 990,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 1042,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1234,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1234,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1453,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1723,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1851,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 1851,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 1943,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 2087,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2468,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 2468,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2800,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2968,
+          "SubSpawn": 0,
+          "Eggs": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3085,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3085,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 3137,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "B",
+          "Timing": 3482,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 3569,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3702,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 3702,
+          "SubSpawn": 2,
+          "Eggs": 10
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 3820,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 3939,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "C",
+          "Timing": 4114,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 4319,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 4319,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4937,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5554,
+          "Lesser": true
+        }
+      ],
+      "1200": [
+        {
+          "Spawn": "A",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 269,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 364,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 617,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 617,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 990,
+          "SubSpawn": 4,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 1042,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1234,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1234,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1258,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1453,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "B",
+          "Timing": 1723,
+          "SubSpawn": 1,
+          "Eggs": 10
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1851,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 1851,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 1943,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 2087,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 2108,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2468,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 2468,
+          "SubSpawn": 5,
+          "Eggs": 5
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2648,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 2800,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "B",
+          "Timing": 2968,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3085,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3085,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "A",
+          "Timing": 3137,
+          "SubSpawn": 0,
+          "Eggs": 10
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 3482,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3569,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3702,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "C",
+          "Timing": 3702,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 3820,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienGolden",
+          "Spawn": "C",
+          "Timing": 3939,
+          "SubSpawn": 3,
+          "Eggs": 10
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 4114,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4319,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 4319,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4937,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5554,
+          "Lesser": true
+        }
+      ]
+    },
+    "5": {
+      "300": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 204,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 1080,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 2046,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2160,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2505,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2730,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 3240,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 3612,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "C",
+          "Timing": 3841,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "450": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 204,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1070,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 1080,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1381,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 2046,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 2160,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 2505,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 2730,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 3240,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 3424,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3612,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3841,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5400,
+          "Lesser": true
+        }
+      ],
+      "600": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 298,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 504,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 864,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 864,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1011,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1027,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1728,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1728,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 2501,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 2584,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2592,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 2592,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 2832,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3048,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3456,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 3456,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 3732,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3936,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 4320,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5184,
+          "Lesser": true
+        }
+      ],
+      "750": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 230,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 514,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 720,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 968,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1336,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1440,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1576,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1860,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 2282,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2804,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 2880,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 3260,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3593,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 3600,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3800,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 4000,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 4320,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ],
+      "900": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 230,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 514,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 720,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 720,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 968,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1336,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1440,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1440,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1576,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1860,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 2282,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2679,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2804,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2880,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 2880,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 3260,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "B",
+          "Timing": 3430,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 3593,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3600,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 3600,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 3800,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 4000,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 4232,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5040,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5760,
+          "Lesser": true
+        }
+      ],
+      "1050": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 172,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 471,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 617,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 617,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 814,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1159,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1234,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1234,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1446,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1674,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1851,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 1851,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 1967,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2379,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2468,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 2468,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 2828,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 3020,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3085,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 3085,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3190,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3410,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 3446,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3702,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 3702,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 4045,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 4146,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "B",
+          "Timing": 4313,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 4319,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "C",
+          "Timing": 4319,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4937,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5554,
+          "Lesser": true
+        }
+      ],
+      "1200": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 172,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 471,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 617,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 617,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 814,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 1159,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1234,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1234,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1446,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1550,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "C",
+          "Timing": 1674,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1851,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 1851,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 1967,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 2032,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2379,
+          "SubSpawn": 4
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2468,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "C",
+          "Timing": 2468,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 2478,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 2828,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 3020,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3085,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 3085,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 3190,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 3410,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 3446,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3702,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 3702,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 4045,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 4146,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 4313,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4319,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 4319,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4937,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5554,
+          "Lesser": true
+        }
+      ],
+      "1350": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 316,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 535,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 540,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 540,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 690,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 929,
+          "SubSpawn": 5
+        },
+        {
+          "Spawn": "C",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 1080,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 1252,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 1492,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1620,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 1620,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "A",
+          "Timing": 1806,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 2094,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 2262,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "B",
+          "Timing": 2512,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 2545,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "C",
+          "Timing": 2700,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 2700,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "C",
+          "Timing": 2977,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 3162,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "C",
+          "Timing": 3183,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakediver",
+          "Spawn": "B",
+          "Timing": 3240,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 3398,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 3525,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 3555,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3780,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 3780,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 3789,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 3872,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 4080,
+          "SubSpawn": 1
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "C",
+          "Timing": 4860,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5400,
+          "Lesser": true
+        },
+        {
+          "Spawn": "B",
+          "Timing": 5940,
+          "Lesser": true
+        }
+      ],
+      "1500": [
+        {
+          "Spawn": "C",
+          "Timing": 0,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "C",
+          "Timing": 0,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 316,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "C",
+          "Timing": 535,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 540,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "A",
+          "Timing": 540,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 690,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "A",
+          "Timing": 903,
+          "SubSpawn": 5
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 929,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 1080,
+          "Lesser": true
+        },
+        {
+          "Boss": "Sakerocket",
+          "Spawn": "B",
+          "Timing": 1080,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 1134,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienBomber",
+          "Spawn": "B",
+          "Timing": 1252,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 1492,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 1620,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 1620,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "A",
+          "Timing": 1806,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 2094,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienShield",
+          "Spawn": "A",
+          "Timing": 2138,
+          "SubSpawn": 2
+        },
+        {
+          "Spawn": "B",
+          "Timing": 2160,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 2160,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 2262,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "B",
+          "Timing": 2512,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "B",
+          "Timing": 2545,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 2700,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 2700,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 2977,
+          "SubSpawn": 1
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3162,
+          "SubSpawn": 3
+        },
+        {
+          "Boss": "SakeDolphin",
+          "Spawn": "A",
+          "Timing": 3183,
+          "SubSpawn": 3
+        },
+        {
+          "Spawn": "C",
+          "Timing": 3240,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "C",
+          "Timing": 3240,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "C",
+          "Timing": 3398,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakeSaucer",
+          "Spawn": "C",
+          "Timing": 3525,
+          "SubSpawn": 2
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "C",
+          "Timing": 3555,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 3780,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 3780,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakePillar",
+          "Spawn": "A",
+          "Timing": 3789,
+          "SubSpawn": 0
+        },
+        {
+          "Boss": "SakelienSnake",
+          "Spawn": "A",
+          "Timing": 3872,
+          "SubSpawn": 4
+        },
+        {
+          "Boss": "SakelienTower",
+          "Spawn": "A",
+          "Timing": 4080,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "B",
+          "Timing": 4320,
+          "Lesser": true
+        },
+        {
+          "Boss": "SakelienCupTwins",
+          "Spawn": "B",
+          "Timing": 4320,
+          "SubSpawn": 0
+        },
+        {
+          "Spawn": "A",
+          "Timing": 4860,
+          "Lesser": true
+        },
+        {
+          "Spawn": "C",
+          "Timing": 5400,
+          "Lesser": true
+        },
+        {
+          "Spawn": "A",
+          "Timing": 5940,
+          "Lesser": true
+        }
+      ]
+    }
+  }
+}

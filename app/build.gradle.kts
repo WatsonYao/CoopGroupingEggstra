@@ -47,6 +47,7 @@ dependencies {
   implementation(libs.androidx.constraintlayout)
   implementation(libs.androidx.navigation.fragment.ktx)
   implementation(libs.androidx.navigation.ui.ktx)
+  implementation("androidx.drawerlayout:drawerlayout:1.2.0")
 
   implementation("androidx.recyclerview:recyclerview:1.3.2")
   implementation("com.google.code.gson:gson:2.11.0")
