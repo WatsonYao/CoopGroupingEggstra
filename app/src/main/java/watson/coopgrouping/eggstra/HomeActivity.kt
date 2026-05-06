@@ -202,13 +202,18 @@ class HomeActivity : AppCompatActivity() {
       }
 
       val waveSpawns = data.spawns[waveNumber.toString()] ?: return@forEachIndexed
-      val topDifficulties = waveSpawns.keys
+      val allDifficulties = waveSpawns.keys
         .mapNotNull { it.toIntOrNull() }
-        .sortedDescending()
-        .take(2)
         .sorted()
 
-      topDifficulties.forEach { difficulty ->
+      val limitedDifficulties = when (waveNumber) {
+        3 -> allDifficulties.sortedDescending().take(2).sorted()
+        4 -> allDifficulties.sortedDescending().take(3).sorted()
+        5 -> allDifficulties.sortedDescending().take(4).sorted()
+        else -> allDifficulties
+      }
+
+      limitedDifficulties.forEach { difficulty ->
         val difficultyKey = difficulty.toString()
         val entries = waveSpawns[difficultyKey] ?: emptyList()
         val key = "e${eventNo}-w${waveNumber}-d${difficulty}"
